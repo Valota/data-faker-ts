@@ -2,8 +2,8 @@
   "name": "@valota/data-faker",
   "version": "1.0.0",
   "description": "Data faker functions for Valotalive data syntaxes",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "scripts": {
     "build": "tsc && npm run generateDoc",
     "watch": "tsc --watch",
