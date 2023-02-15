@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fontId = exports.formattedDateWithinFromNow = exports.formattedDateNow = exports.formattedDate = void 0;
+exports.numberAsString = exports.fontId = exports.formattedDateWithinFromNow = exports.formattedDateNow = exports.formattedDate = void 0;
 const luxon_1 = require("luxon");
 const fonts_json_1 = __importDefault(require("./fonts.json"));
 //https://moment.github.io/luxon/#/formatting?id=table-of-tokens
@@ -44,7 +44,7 @@ exports.formattedDateNow = formattedDateNow;
  */
 function formattedDateWithinFromNow(withinStart, withinEnd, withinUnit, returnFormatLuxon, returnAsInt = false) {
     const multipliers = { 's': 1, 'min': 60, 'h': 3600, 'd': 86400, 'mo': 2592000, 'y': 31536000 };
-    let timestamp = Math.round(Date.now() / 1000) + (Math.random() * (Math.abs(withinStart) + Math.abs(withinEnd)) + withinStart) * multipliers[withinUnit];
+    let timestamp = Math.round(Date.now() / 1000) + (Math.random() * (withinEnd - withinStart) + withinStart) * multipliers[withinUnit];
     return formattedDate(luxon_1.DateTime.fromSeconds(timestamp), returnFormatLuxon, returnAsInt);
 }
 exports.formattedDateWithinFromNow = formattedDateWithinFromNow;
@@ -57,3 +57,17 @@ function fontId() {
     return fonts_json_1.default[Math.floor(Math.random() * fonts_json_1.default.length)];
 }
 exports.fontId = fontId;
+/**
+ * get a random number as a string
+ *
+ * @param {number} min
+ * @param {number} max
+ * @param {number} precision
+ * @returns {string}
+ */
+function numberAsString(min, max, precision = 2) {
+    const nils = Math.pow(10, precision);
+    const num = Math.round((min + (Math.random() * (max - min))) * nils) / nils;
+    return "" + num;
+}
+exports.numberAsString = numberAsString;

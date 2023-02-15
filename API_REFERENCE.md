@@ -13,6 +13,9 @@
 <dt><a href="#fontId">fontId()</a> ⇒ <code>string</code></dt>
 <dd><p>get a random font id string</p>
 </dd>
+<dt><a href="#numberAsString">numberAsString(min, max, precision)</a> ⇒ <code>string</code></dt>
+<dd><p>get a random number as a string</p>
+</dd>
 </dl>
 
 <a name="formattedDate"></a>
@@ -66,3 +69,16 @@ formattedDateWithinFromNow(-2,5, "d", "yyyy-MM-dd")
 get a random font id string
 
 **Kind**: global function  
+<a name="numberAsString"></a>
+
+# numberAsString(min, max, precision) ⇒ <code>string</code>
+get a random number as a string
+
+**Kind**: global function  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| min | <code>number</code> |  | 
+| max | <code>number</code> |  | 
+| precision | <code>number</code> | <code>2</code> | 
+

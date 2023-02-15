@@ -35,4 +35,13 @@ export declare function formattedDateWithinFromNow(withinStart: number, withinEn
  * @returns {string}
  */
 export declare function fontId(): string;
+/**
+ * get a random number as a string
+ *
+ * @param {number} min
+ * @param {number} max
+ * @param {number} precision
+ * @returns {string}
+ */
+export declare function numberAsString(min: number, max: number, precision?: number): string;
 export {};

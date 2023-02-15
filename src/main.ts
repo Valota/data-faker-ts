@@ -45,7 +45,7 @@ type TimeUnits = 's' | 'min' | 'h' | 'd' | 'mo' | 'y';
 export function formattedDateWithinFromNow(withinStart:number,withinEnd:number, withinUnit:TimeUnits, returnFormatLuxon:string, returnAsInt:boolean = false): number|string {
 	const multipliers = {'s':1, 'min':60, 'h':3600, 'd':86400, 'mo': 2592000, 'y':31536000};
 
-	let timestamp = Math.round(Date.now()/1000) + (Math.random()*(Math.abs(withinStart)+Math.abs(withinEnd))+withinStart) * multipliers[withinUnit];
+	let timestamp = Math.round(Date.now()/1000) + (Math.random()*(withinEnd-withinStart)+withinStart) * multipliers[withinUnit];
 	return formattedDate(DateTime.fromSeconds(timestamp), returnFormatLuxon, returnAsInt);
 }
 
@@ -58,4 +58,17 @@ export function fontId():string {
 	return fonts[Math.floor(Math.random() * fonts.length)];
 }
 
+/**
+ * get a random number as a string
+ *
+ * @param {number} min
+ * @param {number} max
+ * @param {number} precision
+ * @returns {string}
+ */
+export function numberAsString(min:number, max:number, precision:number = 2):string {
+	const nils = Math.pow(10,precision)
+	const num = Math.round((min+(Math.random()*(max-min)))*nils)/nils;
+	return "" + num;
+}
 
