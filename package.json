@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc && npm run generateDoc",
     "watch": "tsc --watch",
-    "release": "tsc && npm run generateDoc && commit-and-tag-version",
+    "release": "commit-and-tag-version",
     "generateDoc": "jsdoc2md --heading-depth 1 dist/**/* > API_REFERENCE.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -42,5 +42,10 @@
   "homepage": "https://github.com/Valota/data-faker-ts",
   "dependencies": {
     "luxon": "^3.2.1"
+  },
+  "commit-and-tag-version": {
+  "scripts": {
+    "prerelease": "tsc && npm run generateDoc && git add API_REFERENCE.md dist/"
   }
+}
 }
