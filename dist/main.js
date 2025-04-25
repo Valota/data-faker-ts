@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.numberAsString = exports.fontId = exports.formattedDateWithinFromNow = exports.formattedDateNow = exports.formattedDate = void 0;
+exports.clockConfigurationString = exports.numberAsString = exports.fontId = exports.formattedDateWithinFromNow = exports.formattedDateNow = exports.formattedDate = void 0;
 const luxon_1 = require("luxon");
 const fonts_json_1 = __importDefault(require("./fonts.json"));
 //https://moment.github.io/luxon/#/formatting?id=table-of-tokens
@@ -11,7 +11,7 @@ const fonts_json_1 = __importDefault(require("./fonts.json"));
  * Get formatted date from Luxon DateTime
  * @param {DateTime} fromDateLuxon Date to format
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  */
 function formattedDate(fromDateLuxon, returnFormatLuxon, returnAsInt = false) {
@@ -22,7 +22,7 @@ exports.formattedDate = formattedDate;
 /**
  * Get a formatted date
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  */
 function formattedDateNow(returnFormatLuxon, returnAsInt = false) {
@@ -36,7 +36,7 @@ exports.formattedDateNow = formattedDateNow;
  * @param {number} withinEnd End value, can be negative. For example 13
  * @param {TimeUnits} withinUnit Unit for the values. For example 'h'
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  * @example
  * //returns for example 2023-02-13 or 2023-02-18 when called on 2023-02-14
@@ -62,7 +62,7 @@ exports.fontId = fontId;
  *
  * @param {number} min
  * @param {number} max
- * @param {number} precision
+ * @param {number} [precision]
  * @returns {string}
  */
 function numberAsString(min, max, precision = 2) {
@@ -71,3 +71,15 @@ function numberAsString(min, max, precision = 2) {
     return "" + num;
 }
 exports.numberAsString = numberAsString;
+/**
+ * Generate {am:boolean, offset:offset_s_int} json as stringified for clock configuration
+ *
+ * @param {boolean} [am]
+ * @param {number} [offset_s]
+ *
+ * @returns {string}
+ */
+function clockConfigurationString(am, offset_s) {
+    return JSON.stringify({ am: am !== null && am !== void 0 ? am : Math.random() > .5, offset: offset_s !== null && offset_s !== void 0 ? offset_s : 60 * 60 * Math.floor(Math.random() * 12) });
+}
+exports.clockConfigurationString = clockConfigurationString;

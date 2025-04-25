@@ -8,7 +8,7 @@ import fonts from "./fonts.json";
  * Get formatted date from Luxon DateTime
  * @param {DateTime} fromDateLuxon Date to format
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  */
 export function formattedDate(fromDateLuxon:DateTime, returnFormatLuxon:string, returnAsInt:boolean = false): number|string {
@@ -19,7 +19,7 @@ export function formattedDate(fromDateLuxon:DateTime, returnFormatLuxon:string, 
 /**
  * Get a formatted date
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  */
 export function formattedDateNow(returnFormatLuxon:string, returnAsInt:boolean = false):number|string {
@@ -36,7 +36,7 @@ type TimeUnits = 's' | 'min' | 'h' | 'd' | 'mo' | 'y';
  * @param {number} withinEnd End value, can be negative. For example 13
  * @param {TimeUnits} withinUnit Unit for the values. For example 'h'
  * @param {string} returnFormatLuxon Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd'
- * @param {boolean} returnAsInt Return value as an integer.
+ * @param {boolean} [returnAsInt=false] Return value as an integer.
  * @returns {number | string}
  * @example
  * //returns for example 2023-02-13 or 2023-02-18 when called on 2023-02-14
@@ -63,12 +63,25 @@ export function fontId():string {
  *
  * @param {number} min
  * @param {number} max
- * @param {number} precision
+ * @param {number} [precision]
  * @returns {string}
  */
 export function numberAsString(min:number, max:number, precision:number = 2):string {
 	const nils = Math.pow(10,precision)
 	const num = Math.round((min+(Math.random()*(max-min)))*nils)/nils;
 	return "" + num;
+}
+
+
+/**
+ * Generate {am:boolean, offset:offset_s_int} json as stringified for clock configuration
+ *
+ * @param {boolean} [am]
+ * @param {number} [offset_s]
+ *
+ * @returns {string}
+ */
+export function clockConfigurationString(am?:boolean, offset_s?:number):string {
+	return JSON.stringify({am:am ?? Math.random() > .5, offset:offset_s ?? 60*60*Math.floor(Math.random()*12)})
 }
 

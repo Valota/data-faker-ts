@@ -1,26 +1,29 @@
 # Functions
 
 <dl>
-<dt><a href="#formattedDate">formattedDate(fromDateLuxon, returnFormatLuxon, returnAsInt)</a> ⇒ <code>number</code> | <code>string</code></dt>
+<dt><a href="#formattedDate">formattedDate(fromDateLuxon, returnFormatLuxon, [returnAsInt])</a> ⇒ <code>number</code> | <code>string</code></dt>
 <dd><p>Get formatted date from Luxon DateTime</p>
 </dd>
-<dt><a href="#formattedDateNow">formattedDateNow(returnFormatLuxon, returnAsInt)</a> ⇒ <code>number</code> | <code>string</code></dt>
+<dt><a href="#formattedDateNow">formattedDateNow(returnFormatLuxon, [returnAsInt])</a> ⇒ <code>number</code> | <code>string</code></dt>
 <dd><p>Get a formatted date</p>
 </dd>
-<dt><a href="#formattedDateWithinFromNow">formattedDateWithinFromNow(withinStart, withinEnd, withinUnit, returnFormatLuxon, returnAsInt)</a> ⇒ <code>number</code> | <code>string</code></dt>
+<dt><a href="#formattedDateWithinFromNow">formattedDateWithinFromNow(withinStart, withinEnd, withinUnit, returnFormatLuxon, [returnAsInt])</a> ⇒ <code>number</code> | <code>string</code></dt>
 <dd><p>Get a formatted random date within the selected time period.</p>
 </dd>
 <dt><a href="#fontId">fontId()</a> ⇒ <code>string</code></dt>
 <dd><p>get a random font id string</p>
 </dd>
-<dt><a href="#numberAsString">numberAsString(min, max, precision)</a> ⇒ <code>string</code></dt>
+<dt><a href="#numberAsString">numberAsString(min, max, [precision])</a> ⇒ <code>string</code></dt>
 <dd><p>get a random number as a string</p>
+</dd>
+<dt><a href="#clockConfigurationString">clockConfigurationString([am], [offset_s])</a> ⇒ <code>string</code></dt>
+<dd><p>Generate {am:boolean, offset:offset_s_int} json as stringified for clock configuration</p>
 </dd>
 </dl>
 
 <a name="formattedDate"></a>
 
-# formattedDate(fromDateLuxon, returnFormatLuxon, returnAsInt) ⇒ <code>number</code> \| <code>string</code>
+# formattedDate(fromDateLuxon, returnFormatLuxon, [returnAsInt]) ⇒ <code>number</code> \| <code>string</code>
 Get formatted date from Luxon DateTime
 
 **Kind**: global function  
@@ -29,11 +32,11 @@ Get formatted date from Luxon DateTime
 | --- | --- | --- | --- |
 | fromDateLuxon | <code>DateTime</code> |  | Date to format |
 | returnFormatLuxon | <code>string</code> |  | Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd' |
-| returnAsInt | <code>boolean</code> | <code>false</code> | Return value as an integer. |
+| [returnAsInt] | <code>boolean</code> | <code>false</code> | Return value as an integer. |
 
 <a name="formattedDateNow"></a>
 
-# formattedDateNow(returnFormatLuxon, returnAsInt) ⇒ <code>number</code> \| <code>string</code>
+# formattedDateNow(returnFormatLuxon, [returnAsInt]) ⇒ <code>number</code> \| <code>string</code>
 Get a formatted date
 
 **Kind**: global function  
@@ -41,11 +44,11 @@ Get a formatted date
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | returnFormatLuxon | <code>string</code> |  | Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd' |
-| returnAsInt | <code>boolean</code> | <code>false</code> | Return value as an integer. |
+| [returnAsInt] | <code>boolean</code> | <code>false</code> | Return value as an integer. |
 
 <a name="formattedDateWithinFromNow"></a>
 
-# formattedDateWithinFromNow(withinStart, withinEnd, withinUnit, returnFormatLuxon, returnAsInt) ⇒ <code>number</code> \| <code>string</code>
+# formattedDateWithinFromNow(withinStart, withinEnd, withinUnit, returnFormatLuxon, [returnAsInt]) ⇒ <code>number</code> \| <code>string</code>
 Get a formatted random date within the selected time period.
 
 **Kind**: global function  
@@ -56,7 +59,7 @@ Get a formatted random date within the selected time period.
 | withinEnd | <code>number</code> |  | End value, can be negative. For example 13 |
 | withinUnit | <code>TimeUnits</code> |  | Unit for the values. For example 'h' |
 | returnFormatLuxon | <code>string</code> |  | Return format from https://moment.github.io/luxon/#/formatting?id=table-of-tokens. For example 'yyyy-MM-dd' |
-| returnAsInt | <code>boolean</code> | <code>false</code> | Return value as an integer. |
+| [returnAsInt] | <code>boolean</code> | <code>false</code> | Return value as an integer. |
 
 **Example**  
 ```js
@@ -71,7 +74,7 @@ get a random font id string
 **Kind**: global function  
 <a name="numberAsString"></a>
 
-# numberAsString(min, max, precision) ⇒ <code>string</code>
+# numberAsString(min, max, [precision]) ⇒ <code>string</code>
 get a random number as a string
 
 **Kind**: global function  
@@ -80,5 +83,17 @@ get a random number as a string
 | --- | --- | --- |
 | min | <code>number</code> |  | 
 | max | <code>number</code> |  | 
-| precision | <code>number</code> | <code>2</code> | 
+| [precision] | <code>number</code> | <code>2</code> | 
+
+<a name="clockConfigurationString"></a>
+
+# clockConfigurationString([am], [offset_s]) ⇒ <code>string</code>
+Generate {am:boolean, offset:offset_s_int} json as stringified for clock configuration
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| [am] | <code>boolean</code> | 
+| [offset_s] | <code>number</code> | 
 
